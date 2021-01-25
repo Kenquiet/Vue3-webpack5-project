@@ -5,7 +5,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // 环境
-  entry: path.resolve(__dirname, './src/main.js'), // 打包指定路径
+  entry: path.resolve(__dirname, './src/main.ts'), // 打包指定路径
   output: {
     path: path.resolve(__dirname, 'dist'), // 打包生成路径
     filename: 'js/[name].js' // 打包生成的静态资源名字

@@ -6,9 +6,9 @@
   <div class="opte" @click="changeName">巴啦啦小魔仙</div>
   <div class="title">{{ mergeData }}</div>
 </template>
-<script>
-import { watch, reactive, toRefs, onMounted, computed } from 'vue';
-export default {
+<script lang="ts">
+import { watch, reactive, toRefs, onMounted, computed, defineComponent } from 'vue';
+export default defineComponent({
   name: 'App',
   setup() {
     const state = reactive({
@@ -23,7 +23,7 @@ export default {
       () => state.title,
       (val, oldVal) => {
         console.log(val, oldVal);
-      }, { lazy: false } // 第一次创建不监听
+      } // 第一次创建不监听
     )
     const doubleClick = () => {
       state.title = '我点击了开始测试 vue3.0 数据动态更新，怎么样不错吧'
@@ -42,8 +42,7 @@ export default {
       () => data.name,
       (val, oldVal) => {
         console.log(val, oldVal)
-      },
-      { lazy: false }
+      }
     )
     const changeName = () => {
       data.name = '伏虎小王子'
@@ -55,7 +54,7 @@ export default {
       doubleClick, resetClick, changeName, mergeData
     }
   }
-}
+})
 </script>
 
 <style>
