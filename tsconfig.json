@@ -6,6 +6,7 @@
     "isolatedModules": true,
     "strict": true,
     "noUnusedLocals": true,
+    "sourceMap": true,
     "noUnusedParameters": true,
     "experimentalDecorators": true,
     "lib": ["DOM", "ESNext"]
