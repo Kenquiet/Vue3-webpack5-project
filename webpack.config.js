@@ -1,11 +1,11 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { VueLoaderPlugin } = require('vue-loader/dist/index');
+const { VueLoaderPlugin, default: loader } = require('vue-loader/dist/index');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'development', // 环境
-  entry: path.resolve(__dirname, './src/main.js'), // 打包指定路径
+  entry: path.resolve(__dirname, './src/main.ts'), // 打包指定路径
   output: {
     path: path.resolve(__dirname, 'dist'), // 打包生成路径
     filename: 'js/[name].js' // 打包生成的静态资源名字
@@ -18,9 +18,22 @@ module.exports = {
       test: /\.js$/,
       exclude: /node_modules/, // 不编译node_modules文件
       loader: 'babel-loader'
+    },
+    { 
+      test: /\.tsx?$/,
+      use: [
+        "babel-loader", {
+          loader: "ts-loader" ,
+          options: { appendTsxSuffixTo: [/\.vue$/] }
+        }
+      ]
+    },
+    {
+      test: /\.css|scss$/,
+      use: ['style-loader', 'css-loader', 'sass-loader']
     },{
-      test: /\.css$/,
-      use: ['style-loader', 'css-loader']
+      test:  /\.(eot|svg|ttf|woff|woff2)(\?\S*)?$/,
+      loader: 'file-loader'
     }]
   },
   plugins: [
@@ -34,8 +47,9 @@ module.exports = {
   ],
   resolve: {
     extensions: ['.js', '.vue', '.ts', 'json'],
+    modules: ['src' ,'node_modules'],
     alias: {
-      "@": path.resolve(__dirname, 'src'),
+      "/@/": path.resolve(__dirname, 'src'),
       "/#": path.resolve(__dirname, 'src/assets')
     }
   },
