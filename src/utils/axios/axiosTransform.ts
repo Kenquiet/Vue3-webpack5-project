@@ -7,7 +7,7 @@ export abstract class AxiosHook {
    * @description： 请求之前处理配置
    * @description: process configuration before request
    */
-  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig;
+  beforeRequestHook?: (config: AxiosRequestConfig, options: RequestOptions) => AxiosRequestConfig | any;
 
   /**
    * @description: 请求成功处理
@@ -23,7 +23,7 @@ export abstract class AxiosHook {
   /**
    * @description: 请求之前的拦截器
    */
-  requestInterceptors?: (config: AxiosRequestConfig) => AxiosRequestConfig
+  requestInterceptors?: (config: AxiosRequestConfig) => AxiosRequestConfig | string
 
   /**
    * @description: 请求之后的拦截器

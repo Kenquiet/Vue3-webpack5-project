@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from 'axios';
 import { AxiosHook } from './axiosTransform';
-export type ErrorMessageMode = 'none' | 'modal' | 'message' | undefined;
+export type ErrorMessageMode = 'none' | 'error' | 'modal' | 'message' | undefined;
 
 export interface RequestOptions {
   // 请求参数拼接到url
