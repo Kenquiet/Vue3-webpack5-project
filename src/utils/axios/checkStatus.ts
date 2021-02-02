@@ -1,4 +1,4 @@
-
+import { userStore } from '../../store/modules/user'
 import { ElMessage } from 'element-plus'
 import { errMsg } from '../../locales/zh_CN/sys/api'
 export function checkStatus(status: number, msg: string): void {
@@ -38,7 +38,7 @@ export function checkStatus(status: number, msg: string): void {
       ElMessage.error(errMsg.errMsg504);
       break;
     case 505:
-      ElMessage.error(errMsg.errMsg505;
+      ElMessage.error(errMsg.errMsg505);
       break;
     default:
   }

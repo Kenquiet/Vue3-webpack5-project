@@ -23,7 +23,7 @@ export abstract class AxiosHook {
   /**
    * @description: 请求之前的拦截器
    */
-  requestInterceptors?: (config: AxiosRequestConfig) => AxiosRequestConfig | string
+  requestInterceptors?: (config: AxiosRequestConfig) => AxiosRequestConfig;
 
   /**
    * @description: 请求之后的拦截器

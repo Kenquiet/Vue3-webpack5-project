@@ -1,7 +1,10 @@
 import type { GlobEnvConfig } from '../config/config';
 
+const NODE_ENV = process.env.NODE_ENV
+const ENV = process.env
+
 export function getGlobEnvConfig(): GlobEnvConfig {
-  const env = import.meta.env;
+  const env = NODE_ENV;
   return (env as unknown) as GlobEnvConfig;
 }
 
@@ -20,8 +23,8 @@ export const prodMode = 'production';
  * @returns:
  * @example:
  */
-export function getEnv(): string {
-  return import.meta.env.MODE;
+export function getEnv(): string | undefined {
+  return process.env.MODE;
 }
 
 /**
@@ -30,7 +33,7 @@ export function getEnv(): string {
  * @example:
  */
 export function isDevMode(): boolean {
-  return import.meta.env.DEV;
+  return NODE_ENV === devMode;
 }
 
 /**
@@ -39,7 +42,7 @@ export function isDevMode(): boolean {
  * @example:
  */
 export function isProdMode(): boolean {
-  return import.meta.env.PROD;
+  return NODE_ENV === prodMode;
 }
 
 /**
@@ -48,5 +51,5 @@ export function isProdMode(): boolean {
  * @example:
  */
 export function isUseMock(): boolean {
-  return import.meta.env.VITE_USE_MOCK === 'true';
+  return ENV.VITE_USE_MOCK === 'true';
 }

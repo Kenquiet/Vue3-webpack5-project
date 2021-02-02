@@ -1,4 +1,4 @@
-import { userStore } from '/@/store/modules/user';
+import { userStore } from '../store/modules/user';
 
 /**
  * @description:  Get token

@@ -1,4 +1,4 @@
-import type { ProjectConfig, GlobConfig, GlobEnvConfig } from '../config/config';
+import type { GlobConfig, GlobEnvConfig } from '../config/config';
 import { getGlobEnvConfig, isDevMode } from '../utils/env';
 import { warn } from '../utils/log';
 
@@ -10,7 +10,7 @@ export const getShortName = (env: any) => {
 
 const reg = /[a-zA-Z\_]*/;
 
-const ENV_NAME = getShortName(import.meta.env);
+const ENV_NAME = getShortName(process.env);
 const ENV = ((isDevMode() ? getGlobEnvConfig() : window[ENV_NAME as any]) as unknown) as GlobEnvConfig
 
 const {

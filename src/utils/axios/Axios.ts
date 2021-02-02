@@ -1,4 +1,4 @@
-import type { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios';
+import { AxiosRequestConfig, AxiosInstance, AxiosResponse } from 'axios';
 import { cloneDeep } from 'lodash-es'; 
 
 import axios from 'axios';
@@ -74,7 +74,7 @@ export class VAxios {
     /**
      * @description: 请求拦截器配置处理
      */
-    this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig) => {
+    this.axiosInstance.interceptors.request.use((config: AxiosRequestConfig ) => {
       const { headers: { ignoreCancelToken } = { ignoreCancelToken: false } } = config
       !ignoreCancelToken && axiosCanceler.addPanding(config); // 添加记录
       if(requestInterceptors && isFn(requestInterceptors)) {

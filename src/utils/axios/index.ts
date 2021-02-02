@@ -112,7 +112,7 @@ const transform: AxiosHook = {
     if(token) {
       config.headers.Authorization = token
     }
-    return token
+    return config
   },
 
   /**
